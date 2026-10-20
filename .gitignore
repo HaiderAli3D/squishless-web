@@ -8,3 +8,6 @@
 /.build-lock/
 /.dist-build-*/
 /.dist-old-*/
+
+.vercel
+.env*
