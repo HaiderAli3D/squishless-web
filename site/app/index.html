@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Squishless: resize photos without the squish</title>
+<meta name="description" content="Resize photos to any size or shape without squashing faces and buildings. Free, private, runs in your browser: your photos never leave your device.">
+<meta name="theme-color" content="#fdf6f4">
+<meta property="og:type" content="website">
+<meta property="og:url" content="__SITE_URL__/app">
+<link rel="canonical" href="__SITE_URL__/app">
+<meta property="og:site_name" content="Squishless">
+<meta property="og:title" content="Squishless: resize photos without the squish">
+<meta property="og:description" content="Make photos smaller or a new shape without squashing what matters. Free, and your photos never leave your device.">
+<meta property="og:image" content="__SITE_URL__/assets/img/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A photo resized normally next to the same photo resized with Squishless">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Squishless: resize photos without the squish">
+<meta name="twitter:description" content="Make photos smaller or a new shape without squashing what matters. Free, and your photos never leave your device.">
+<meta name="twitter:image" content="__SITE_URL__/assets/img/og-image.png">
+<script src="/assets/js/theme.js?v=__BUILD_ID__"></script>
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/dynapuff-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/figtree-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/tokens.css?v=__BUILD_ID__">
+<link rel="stylesheet" href="/assets/css/base.css?v=__BUILD_ID__">
+<link rel="stylesheet" href="/assets/css/app.css?v=__BUILD_ID__">
+<script type="module" src="/assets/js/app/main.js?v=__BUILD_ID__"></script>
+<script src="/sw-register.js?v=__BUILD_ID__" defer></script>
+</head>
+<body class="app" data-view="empty">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="app-header">
+  <a class="brand" href="/"><img src="/assets/img/mark.svg" alt="" width="32" height="32"><span>Squishless</span></a>
+  <div class="engine-chip" id="engine-chip" role="status" aria-live="polite" hidden></div>
+  <nav class="app-header__nav" aria-label="Site">
+    <a class="app-header__link" href="/#how">How it works</a>
+    <a class="btn btn--ghost btn--icon" href="https://github.com/HaiderAli3D/squishless-web" aria-label="Squishless on GitHub" data-tooltip="Source on GitHub" data-tooltip-pos="bottom" data-tooltip-align="end" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.8a10.2 10.2 0 0 0-3.2 19.9c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.2-3.4-1.2-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.6 1 1.6 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.3-.3-4.7-1.1-4.7-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .9-.3 2.8 1a9.6 9.6 0 0 1 5.1 0c1.9-1.3 2.8-1 2.8-1 .6 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.7 5 .4.3.7 1 .7 1.9v2.9c0 .3.2.6.7.5A10.2 10.2 0 0 0 12 1.8Z"/></svg>
+    </a>
+    <button class="btn btn--ghost btn--icon theme-toggle" type="button" data-theme-toggle aria-label="Switch theme" data-tooltip="Light or dark" data-tooltip-pos="bottom" data-tooltip-align="end">
+      <svg class="theme-toggle__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
+      <svg class="theme-toggle__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+    </button>
+  </nav>
+</header>
+
+<main id="main" class="app-main">
+  <!-- ============ Empty state ============ -->
+  <section class="welcome" id="welcome" aria-labelledby="welcome-title">
+    <div class="welcome__intro">
+      <h1 class="welcome__title" id="welcome-title">Resize a photo without squashing it</h1>
+      <p class="welcome__lead">Squishless quietly removes the dullest strips of pixels, so faces, people and buildings keep their shape at any size.</p>
+    </div>
+
+    <div class="dropzone welcome__drop" id="dropzone">
+      <div class="welcome__drop-art" aria-hidden="true">
+        <span class="welcome__drop-photo"></span>
+        <span class="welcome__drop-handle"></span>
+      </div>
+      <p class="welcome__drop-title"><span class="welcome__desk">Drop photos here</span><span class="welcome__touch">Pick a photo from your phone</span></p>
+      <button class="btn btn--primary btn--lg" type="button" id="choose-btn">Choose photos</button>
+      <p class="welcome__drop-hint small muted"><span class="welcome__desk">or paste one with <kbd data-mod-key>Ctrl</kbd> <kbd>V</kbd>. </span>JPG, PNG, WebP, GIF and more.</p>
+    </div>
+
+    <div class="welcome__samples">
+      <h2 class="welcome__samples-title">No photo handy? Try one of ours</h2>
+      <ul class="sample-list" role="list">
+        <li><button class="sample" type="button" data-sample="sample.jpg"><img src="/samples/sample.jpg" alt="" width="670" height="447" loading="lazy" decoding="async"><span>Garden</span></button></li>
+        <li><button class="sample" type="button" data-sample="portrait-field.jpg"><img src="/samples/portrait-field.jpg" alt="" width="1000" height="650" loading="lazy" decoding="async"><span>Meadow</span></button></li>
+        <li><button class="sample" type="button" data-sample="lake-canoe.jpg"><img src="/samples/lake-canoe.jpg" alt="" width="1000" height="650" loading="lazy" decoding="async"><span>Lake</span></button></li>
+        <li><button class="sample" type="button" data-sample="city-skyline.jpg"><img src="/samples/city-skyline.jpg" alt="" width="1000" height="650" loading="lazy" decoding="async"><span>City</span></button></li>
+      </ul>
+    </div>
+
+    <p class="privacy">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>
+      <span><strong>Your photos never leave this device.</strong> Everything happens right here in your browser.</span>
+    </p>
+  </section>
+
+  <!-- ============ Editor ============ -->
+  <section class="editor" id="editor" aria-labelledby="editor-title" hidden>
+    <h1 class="visually-hidden" id="editor-title" tabindex="-1">Editor</h1>
+    <div class="workspace">
+      <div class="toolbar">
+        <div class="segmented segmented--sm toolbar__views" role="radiogroup" aria-label="View">
+          <label><input type="radio" name="view" value="edit" checked><span>Edit</span></label>
+          <label><input type="radio" name="view" value="compare"><span>Compare</span></label>
+        </div>
+        <button class="btn btn--secondary btn--sm toolbar__mark" type="button" id="mark-btn" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20c2.5 0 4-1.2 4-3.2a2.3 2.3 0 0 0-4.6 0"/><path d="m8.6 14.6 10.6-10.6a1.6 1.6 0 0 1 2.3 2.3L10.9 16.9"/></svg>
+          <span class="toolbar__mark-label">Mark areas</span><span class="toolbar__mark-short">Mark</span>
+        </button>
+        <div class="readout" id="readout" aria-hidden="true">
+          <span class="readout__size tabular" id="readout-size">0 × 0</span>
+          <span class="readout__from small muted tabular" id="readout-from"></span>
+        </div>
+      </div>
+
+      <div class="subbar" id="compare-bar" hidden>
+        <div class="segmented segmented--sm" role="radiogroup" aria-label="Comparison">
+          <label><input type="radio" name="cmp" value="slider" checked><span>Before/after</span></label>
+          <label><input type="radio" name="cmp" value="side"><span>Side by side</span></label>
+          <label><input type="radio" name="cmp" value="normal"><span>vs normal</span></label>
+        </div>
+      </div>
+
+      <div class="subbar brushbar" id="brush-bar" hidden>
+        <div class="segmented segmented--sm brushbar__tools" role="radiogroup" aria-label="Brush">
+          <label><input type="radio" name="brush" value="keep" checked><span><i class="swatch swatch--keep" aria-hidden="true"></i>Keep</span></label>
+          <label><input type="radio" name="brush" value="remove"><span><i class="swatch swatch--remove" aria-hidden="true"></i>Remove</span></label>
+          <label><input type="radio" name="brush" value="erase"><span>Erase</span></label>
+        </div>
+        <label class="brushbar__size">
+          <span class="visually-hidden">Brush size</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="currentColor"/></svg>
+          <input class="range" type="range" id="brush-size" min="8" max="160" step="2" value="48" aria-label="Brush size">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="currentColor"/></svg>
+        </label>
+        <div class="brushbar__actions">
+          <button class="btn btn--ghost btn--sm btn--icon" type="button" id="undo-btn" aria-label="Undo last stroke" data-tooltip="Undo (Ctrl+Z)" data-tooltip-pos="bottom" disabled>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></svg>
+          </button>
+          <button class="btn btn--ghost btn--sm" type="button" id="clear-btn" disabled>Clear</button>
+          <button class="btn btn--primary btn--sm" type="button" id="mark-done">Done</button>
+        </div>
+        <p class="brushbar__hint small" id="brush-hint"><i class="swatch swatch--keep" aria-hidden="true"></i> <span class="chip-long">Paint </span><strong>Keep</strong> <span class="chip-long">over what must not change.</span><span class="chip-short">must stay.</span> <i class="swatch swatch--remove" aria-hidden="true"></i> <span class="chip-long">Paint </span><strong>Remove</strong> <span class="chip-long">over what can go first.</span><span class="chip-short">can go first.</span></p>
+      </div>
+
+      <div class="stage" id="stage" data-mode="edit">
+        <canvas class="stage__canvas" id="stage-canvas" aria-hidden="true"></canvas>
+        <div class="stage__bounds" id="stage-bounds" aria-hidden="true"></div>
+        <div class="stage__frame" id="stage-frame" role="img" aria-label="Photo"></div>
+        <canvas class="stage__overlay" id="stage-overlay" aria-hidden="true"></canvas>
+        <div class="stage__cursor" id="stage-cursor" aria-hidden="true"></div>
+
+        <div class="handle handle--x" id="handle-x" role="slider" tabindex="0" aria-describedby="handle-help" aria-label="Width" aria-orientation="horizontal" aria-valuemin="1" aria-valuemax="2" aria-valuenow="1"><span class="handle__grip"></span></div>
+        <div class="handle handle--y" id="handle-y" role="slider" tabindex="0" aria-describedby="handle-help" aria-label="Height" aria-orientation="vertical" aria-valuemin="1" aria-valuemax="2" aria-valuenow="1"><span class="handle__grip"></span></div>
+        <p class="visually-hidden" id="handle-help">Arrow keys change the size by 1 pixel, with Shift by 10. The photo grows to the right and downwards, so Up makes it shorter. The exact result follows a moment after you stop.</p>
+        <div class="handle handle--xy" id="handle-xy" aria-hidden="true"><span class="handle__grip"></span></div>
+
+        <div class="stage__bubble tabular" id="stage-bubble" aria-hidden="true"></div>
+        <div class="coach" id="coach" hidden>Drag the handles to resize</div>
+
+        <div class="stage__chips">
+          <span class="stage-chip" id="chip-preparing" hidden><span class="spinner" aria-hidden="true"></span>Preparing smart preview</span>
+          <span class="stage-chip" id="chip-approx" hidden><span class="chip-long">Rough preview while both sides change. The result will be exact.</span><span class="chip-short">Rough preview</span></span>
+        </div>
+
+        <div class="job" id="job" hidden>
+          <svg class="job__ring" viewBox="0 0 40 40" aria-hidden="true"><circle class="job__track" cx="20" cy="20" r="16"/><circle class="job__fill" id="job-fill" cx="20" cy="20" r="16" pathLength="100"/></svg>
+          <span class="job__text" id="job-text">Resizing</span>
+          <button class="btn btn--ghost btn--sm btn--icon job__cancel" type="button" id="job-cancel" aria-label="Cancel resizing" data-tooltip="Cancel">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+          </button>
+          <button class="btn btn--primary btn--sm job__retry" type="button" id="job-retry" hidden>Resize</button>
+        </div>
+
+        <div class="stage__skeleton skeleton" id="stage-skeleton" hidden></div>
+        <div class="notice" id="notice" hidden>
+          <p class="notice__title" id="notice-title"></p>
+          <p class="notice__text" id="notice-text"></p>
+          <div class="notice__actions" id="notice-actions"></div>
+        </div>
+      </div>
+
+      <div class="compare-wrap" id="compare-wrap" hidden>
+        <p class="compare-wrap__wait muted" id="compare-wait" hidden><span class="spinner" aria-hidden="true"></span> Working on the result…</p>
+      </div>
+
+      <div class="filmstrip" id="filmstrip">
+        <button class="filmstrip__add" type="button" id="add-btn" aria-label="Add photos" data-tooltip="Add photos">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        <ul class="filmstrip__list" id="film-list" role="list" aria-label="Your photos"></ul>
+      </div>
+    </div>
+
+    <!-- ============ Controls (side panel, bottom sheet on phones) ============ -->
+    <aside class="panel" id="panel" aria-label="Settings">
+      <button class="panel__grabber" type="button" id="sheet-toggle" aria-expanded="false" aria-controls="panel-more">
+        <span class="panel__grabber-bar" aria-hidden="true"></span>
+        <span class="visually-hidden">More options</span>
+      </button>
+
+      <section class="panel__section panel__size" aria-labelledby="size-title">
+        <div class="panel__head">
+          <h2 class="panel__title" id="size-title">Size</h2>
+          <span class="panel__note small muted" id="size-note"></span>
+          <button class="btn btn--ghost btn--sm panel__more-btn" type="button" id="more-btn" aria-expanded="false" aria-controls="panel-more">
+            <span class="panel__more-open">Format &amp; more</span><span class="panel__more-close">Fewer options</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg>
+          </button>
+        </div>
+        <div class="presets" id="presets" role="radiogroup" aria-labelledby="size-title"></div>
+        <div class="adjusted" id="adjusted" hidden>
+          <span class="small"><strong>This photo</strong> has its own size.</span>
+          <button class="btn btn--ghost btn--sm" type="button" id="adjusted-reset">Use the batch size</button>
+        </div>
+      </section>
+
+      <div class="panel__more" id="panel-more">
+        <section class="panel__section custom" id="custom" aria-labelledby="custom-title" hidden>
+          <h3 class="panel__subtitle" id="custom-title">Custom size</h3>
+          <div class="segmented segmented--sm custom__modes" role="radiogroup" aria-label="How to set the size">
+            <label><input type="radio" name="cmode" value="px" checked><span>Pixels</span></label>
+            <label><input type="radio" name="cmode" value="percent"><span>Percent</span></label>
+            <label><input type="radio" name="cmode" value="width"><span>Width</span></label>
+            <label><input type="radio" name="cmode" value="height"><span>Height</span></label>
+          </div>
+          <div class="custom__fields">
+            <div class="field custom__w">
+              <label class="label" for="c-w">Width</label>
+              <div class="input-group"><input class="input" id="c-w" type="number" inputmode="numeric" min="1" step="1"><span class="input-group__addon" id="c-w-unit">px</span></div>
+            </div>
+            <button class="btn btn--ghost btn--sm btn--icon custom__lock" type="button" id="c-lock" aria-pressed="false" aria-label="Keep proportions" data-tooltip="Keep proportions">
+              <svg class="custom__lock-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M9.5 14.5 14.5 9.5"/><path d="M11 6.5 12.6 5a3.9 3.9 0 0 1 5.5 5.5L16.5 12M13 17.5 11.4 19a3.9 3.9 0 0 1-5.5-5.5L7.5 12"/></svg>
+            </button>
+            <div class="field custom__h">
+              <label class="label" for="c-h">Height</label>
+              <div class="input-group"><input class="input" id="c-h" type="number" inputmode="numeric" min="1" step="1"><span class="input-group__addon" id="c-h-unit">px</span></div>
+            </div>
+          </div>
+          <p class="hint" id="custom-hint"></p>
+        </section>
+
+        <details class="panel__section fine" id="fine">
+          <summary class="fine__summary"><span>Fine-tune</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+          <div class="fine__body">
+            <label class="fine__row fine__row--switch">
+              <span class="fine__label"><span class="label">Protect faces</span><span class="hint">Finds faces and never trims through them.</span></span>
+              <input class="switch" type="checkbox" role="switch" id="opt-faces" checked>
+            </label>
+            <div class="fine__row">
+              <div class="fine__label-row"><label class="label" for="opt-blur">Smoothing</label><output class="badge tabular" id="opt-blur-out" for="opt-blur">2</output></div>
+              <input class="range" type="range" id="opt-blur" min="0" max="7" step="1" value="2" aria-describedby="opt-blur-hint">
+              <p class="hint" id="opt-blur-hint">Higher ignores fine texture like grass and follows bigger shapes.</p>
+            </div>
+            <div class="fine__row">
+              <div class="fine__label-row"><label class="label" for="opt-sobel">Ignore faint edges</label><output class="badge tabular" id="opt-sobel-out" for="opt-sobel">0</output></div>
+              <input class="range" type="range" id="opt-sobel" min="0" max="64" step="1" value="0" aria-describedby="opt-sobel-hint">
+              <p class="hint" id="opt-sobel-hint">Higher lets trimming cut through faint edges, like soft clouds.</p>
+            </div>
+            <button class="btn btn--ghost btn--sm" type="button" id="fine-reset">Reset to defaults</button>
+          </div>
+        </details>
+
+        <section class="panel__section save" aria-labelledby="save-title">
+          <h3 class="panel__subtitle" id="save-title">Save as</h3>
+          <div class="segmented segmented--sm save__formats" role="radiogroup" aria-label="File format">
+            <label><input type="radio" name="fmt" value="same" checked><span>Same</span></label>
+            <label><input type="radio" name="fmt" value="jpeg"><span>JPG</span></label>
+            <label><input type="radio" name="fmt" value="png"><span>PNG</span></label>
+            <label><input type="radio" name="fmt" value="webp"><span>WebP</span></label>
+          </div>
+          <p class="hint" id="fmt-hint">Keeps each photo's own format.</p>
+          <div class="save__quality" id="quality-row">
+            <div class="fine__label-row"><label class="label" for="opt-quality">Quality</label><output class="badge tabular" id="opt-quality-out" for="opt-quality">90</output></div>
+            <input class="range" type="range" id="opt-quality" min="40" max="100" step="1" value="90">
+          </div>
+        </section>
+
+        <p class="shortcuts small muted" id="shortcuts" hidden><span class="shortcuts__all" id="shortcuts-all" hidden><kbd data-mod-key>Ctrl</kbd> <kbd>Enter</kbd> resizes all.</span> <span class="shortcuts__brush" id="shortcuts-brush" hidden><kbd>[</kbd> <kbd>]</kbd> change the brush&nbsp;size.</span></p>
+      </div>
+
+      <section class="panel__actions" aria-label="Save">
+        <div class="batchbar" id="batchbar" hidden>
+          <progress class="progress progress--sm" id="batch-progress" max="1" value="0"></progress>
+          <span class="small tabular" id="batch-text"></span>
+        </div>
+        <button class="btn btn--primary btn--block" type="button" id="resize-all" hidden>Resize all</button>
+        <div class="panel__buttons">
+          <button class="btn btn--primary btn--block" type="button" id="download-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19.5h14"/></svg>
+            <span id="download-label">Download</span>
+          </button>
+          <button class="btn btn--secondary btn--block" type="button" id="zip-btn" hidden><span class="label-long">Download all (.zip)</span><span class="label-short">All as .zip</span></button>
+          <button class="btn btn--secondary btn--block" type="button" id="share-btn" hidden>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V4m0 0L8 8m4-4 4 4M6 12H5a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1h-1"/></svg>
+            <span>Share or save</span>
+          </button>
+        </div>
+      </section>
+    </aside>
+  </section>
+</main>
+
+<input type="file" id="file-input" accept="image/*" multiple hidden>
+<div class="drop-overlay" id="drop-overlay" aria-hidden="true"><p>Drop to add your photos</p></div>
+<div class="toast-region" id="toasts" aria-live="polite"></div>
+<p class="visually-hidden" id="announcer" role="status" aria-live="polite"></p>
+</body>
+</html>

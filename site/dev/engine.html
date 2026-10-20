@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Engine harness · Squishless dev</title>
+  <link rel="stylesheet" href="/dev/dev.css?v=__BUILD_ID__">
+  <script type="module" src="/dev/engine-dev.js?v=__BUILD_ID__"></script>
+</head>
+<body>
+  <main>
+    <h1>Engine harness</h1>
+    <p class="note">Test page for the browser engine (engine.js, worker.js, livepreview.js). Not linked from the site.
+      Tests drive <code>window.squishlessDev</code>.</p>
+
+    <section class="controls" aria-label="Demo controls">
+      <!-- Radio buttons, not <select>: WebKit reports a CSP error for <select> under style-src 'self'. -->
+      <fieldset id="sample">
+        <legend>Sample</legend>
+        <label><input type="radio" name="sample" value="/samples/portrait-field.jpg" checked> portrait-field</label>
+        <label><input type="radio" name="sample" value="/samples/lake-canoe.jpg"> lake-canoe</label>
+        <label><input type="radio" name="sample" value="/samples/city-skyline.jpg"> city-skyline</label>
+        <label><input type="radio" name="sample" value="/samples/sample.jpg"> sample</label>
+      </fieldset>
+      <fieldset id="axis">
+        <legend>Axis</legend>
+        <label><input type="radio" name="axis" value="x" checked> x (width)</label>
+        <label><input type="radio" name="axis" value="y"> y (height)</label>
+      </fieldset>
+      <label><input type="checkbox" id="faces"> Protect faces</label>
+      <button type="button" id="load">Load</button>
+      <button type="button" id="resize">Resize −350 px</button>
+      <button type="button" id="order">Seam order</button>
+      <button type="button" id="cancel">Cancel</button>
+    </section>
+
+    <p id="status" role="status" aria-live="polite">Engine idle.</p>
+    <progress id="progress" max="1" value="0"></progress>
+
+    <section class="live" aria-label="Live preview">
+      <label>Seams <input type="range" id="slider" min="-100" max="100" value="0" step="1" disabled>
+        <output id="sliderOut">0</output></label>
+      <div class="canvases">
+        <figure><canvas id="live"></canvas><figcaption>Live (seam-order map)</figcaption></figure>
+        <figure><canvas id="naive"></canvas><figcaption>Normal resize</figcaption></figure>
+        <figure><canvas id="result"></canvas><figcaption>Exact resize result</figcaption></figure>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

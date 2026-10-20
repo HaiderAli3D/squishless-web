@@ -1,0 +1,252 @@
+/*
+ * Squishless design tokens
+ * ------------------------------------------------------------------
+ * Load order on every page:
+ *   <script src="/assets/js/theme.js?v=__BUILD_ID__"></script>      (classic, in <head>)
+ *   <link rel="stylesheet" href="/assets/css/tokens.css?v=__BUILD_ID__">
+ *   <link rel="stylesheet" href="/assets/css/base.css?v=__BUILD_ID__">
+ *   <link rel="stylesheet" href="/assets/css/<page>.css?v=__BUILD_ID__">
+ *
+ * Brand in one line: a gummy raspberry accent on warm "marshmallow" neutrals,
+ * puffy display type (DynaPuff), a clean text face (Figtree), chunky radii,
+ * press-down buttons and a little spring in the motion.
+ *
+ * Theme rules (see ARCHITECTURE.md): light by default, dark when the OS asks
+ * for it, and <html data-theme="light|dark"> overrides both. The dark values
+ * are written twice on purpose (media query + attribute) because CSS has no
+ * way to share one block between the two selectors.
+ *
+ * Contrast (WCAG 2.x, checked with a script, see styleguide.html):
+ *   text on bg/surface ........ >= 15:1      muted on bg/surface/sunken >= 5.7:1
+ *   accent-text on bg/surface . >= 6.0:1     accent-ink on accent (all states) >= 4.7:1
+ *   success/warning/danger text on bg and on their -soft fills >= 4.6:1
+ *   border-strong vs bg/surface (form control edges) >= 3.2:1
+ *   focus ring vs bg >= 5.3:1 (ring always sits on a bg-coloured halo)
+ *
+ * Breakpoints (custom properties cannot be used inside @media, so they are
+ * documented here; use these numbers in media/container queries):
+ *   --bp-sm  480px   large phones, landscape phones
+ *   --bp-md  768px   tablets, two-column layouts start
+ *   --bp-lg  1024px  laptops, app sidebar appears
+ *   --bp-xl  1280px  wide desktops
+ */
+
+:root {
+  color-scheme: light;
+
+  /* ---------- Raw palette (prefer the semantic tokens below) ---------- */
+  --raspberry-300: #ff8aa8;
+  --raspberry-400: #ff5c86;
+  --raspberry-500: #ff3d6e;   /* signature accent */
+  --raspberry-600: #e0245a;
+  --raspberry-700: #b8134a;
+  --plum-950: #2a0716;        /* ink used on raspberry */
+  --butter-300: #ffe08a;
+  --butter-400: #ffcf4a;
+
+  /* ---------- Semantic colour: light ---------- */
+  --color-bg: #fdf6f4;             /* page */
+  --color-surface: #ffffff;        /* cards, panels */
+  --color-raised: #ffffff;         /* popovers, dialogs, toasts (paired with a shadow) */
+  --color-sunken: #f6eae7;         /* wells, tracks, image stage backdrops */
+  --color-text: #2b1620;
+  --color-muted: #6c5560;
+  --color-subtle: #806a74;         /* placeholders, captions on surface (4.9:1); prefer muted for text */
+  --color-border: #ecdcd8;
+  --color-border-strong: #968089;  /* form control outlines (>= 3:1 vs bg and surface) */
+
+  --color-accent: var(--raspberry-500);       /* fills: primary buttons, slider fill, selected */
+  --color-accent-hover: #ff5580;
+  --color-accent-press: #f2305f;
+  --color-accent-ink: var(--plum-950);        /* text/icons placed ON accent */
+  --color-accent-text: var(--raspberry-700);  /* accent used AS text on bg/surface (links) */
+  --color-accent-soft: #ffe1e8;               /* tinted backgrounds, selected chips */
+  --color-accent-edge: #a50f3f;               /* the chunky "under-lip" of accent buttons */
+
+  --color-highlight: var(--butter-400);       /* sparing pop of colour (badges, sun in the logo) */
+
+  --color-success: #17794e;
+  --color-success-soft: #ddf3e8;
+  --color-warning: #8f5300;
+  --color-warning-soft: #fff0c7;
+  --color-danger: #c4232f;
+  --color-danger-soft: #fde2e2;
+  --color-on-status: #ffffff;                 /* text on solid success/danger fills */
+
+  --color-focus: #1f5fd6;          /* focus ring: blue so it never hides on raspberry */
+  --color-focus-halo: var(--color-bg);
+
+  --color-overlay: rgb(43 22 32 / 0.48);      /* dialog backdrop */
+  --color-scrim-label: rgb(30 12 20 / 0.72);  /* label chips over photos */
+  --color-on-scrim: #ffffff;
+
+  /* Shadows are tinted plum, never neutral grey */
+  --shadow-color: 330 40% 20%;
+  --shadow-1: 0 1px 2px hsl(var(--shadow-color) / 0.08), 0 1px 1px hsl(var(--shadow-color) / 0.06);
+  --shadow-2: 0 2px 4px hsl(var(--shadow-color) / 0.07), 0 6px 14px -4px hsl(var(--shadow-color) / 0.12);
+  --shadow-3: 0 4px 8px hsl(var(--shadow-color) / 0.08), 0 18px 40px -12px hsl(var(--shadow-color) / 0.22);
+  --shadow-lip: 0 4px 0 0;   /* the press-down lip; colour supplied per component */
+
+  /* ---------- Typography ---------- */
+  --font-display: "DynaPuff", "Squishless Display Fallback", ui-rounded, "Arial Rounded MT Bold", system-ui, sans-serif;
+  --font-text: "Figtree", "Squishless Text Fallback", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+
+  /* Fluid type scale (major third-ish, 360px -> 1280px viewport) */
+  --text-xs: clamp(0.75rem, 0.73rem + 0.1vw, 0.8125rem);    /* 12 -> 13 */
+  --text-sm: clamp(0.875rem, 0.86rem + 0.07vw, 0.9375rem);  /* 14 -> 15 */
+  --text-md: clamp(1rem, 0.97rem + 0.14vw, 1.0625rem);      /* 16 -> 17 */
+  --text-lg: clamp(1.125rem, 1.07rem + 0.27vw, 1.3125rem);  /* 18 -> 21 */
+  --text-xl: clamp(1.375rem, 1.26rem + 0.54vw, 1.75rem);    /* 22 -> 28 */
+  --text-2xl: clamp(1.75rem, 1.53rem + 1.09vw, 2.5rem);     /* 28 -> 40 */
+  --text-3xl: clamp(2.25rem, 1.83rem + 2.07vw, 3.75rem);    /* 36 -> 60 */
+  --text-4xl: clamp(2.75rem, 2.04rem + 3.48vw, 5.25rem);    /* 44 -> 84 */
+
+  --leading-tight: 1.08;
+  --leading-snug: 1.3;
+  --leading-normal: 1.55;
+  --weight-regular: 420;
+  --weight-medium: 560;
+  --weight-bold: 700;
+  --weight-display: 650;      /* DynaPuff runs 400..700 */
+  --tracking-display: -0.01em;
+  --measure: 66ch;            /* comfortable line length */
+
+  /* ---------- Spacing (4px base) ---------- */
+  --space-0: 0;
+  --space-1: 0.25rem;  /* 4 */
+  --space-2: 0.5rem;   /* 8 */
+  --space-3: 0.75rem;  /* 12 */
+  --space-4: 1rem;     /* 16 */
+  --space-5: 1.5rem;   /* 24 */
+  --space-6: 2rem;     /* 32 */
+  --space-7: 3rem;     /* 48 */
+  --space-8: 4rem;     /* 64 */
+  --space-9: 6rem;     /* 96 */
+  --space-section: clamp(3rem, 2rem + 5vw, 7rem);
+  --gutter: clamp(1rem, 0.6rem + 2vw, 2rem);   /* page side padding, 16px on phones */
+
+  /* ---------- Radii: chunky, but layered by size ---------- */
+  --radius-xs: 6px;      /* tiny tags, checkbox */
+  --radius-sm: 10px;     /* inputs, small buttons */
+  --radius-md: 14px;     /* buttons */
+  --radius-lg: 22px;     /* cards, photo stage */
+  --radius-xl: 32px;     /* hero panels, dialogs */
+  --radius-pill: 999px;
+
+  /* ---------- Sizes ---------- */
+  --control-sm: 2.25rem;  /* 36 */
+  --control-md: 2.75rem;  /* 44, minimum touch target */
+  --control-lg: 3.5rem;   /* 56 */
+  --border-width: 2px;    /* chunky outlines */
+  --container: 72rem;
+  --container-narrow: 44rem;
+
+  /* ---------- Motion ---------- */
+  --duration-instant: 90ms;
+  --duration-fast: 160ms;
+  --duration-base: 260ms;
+  --duration-slow: 480ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  /* Bouncy overshoot for small UI (thumbs, toggles, chips) */
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  /* A real damped spring (damping ratio 0.42, 1.6 Hz; ~23% overshoot). Use with --duration-slow. */
+  --ease-spring: linear(0, 0.029, 0.108, 0.222, 0.359, 0.506, 0.653, 0.791, 0.915, 1.021, 1.105,
+    1.167, 1.208, 1.229, 1.233, 1.224, 1.203, 1.175, 1.142, 1.108, 1.074, 1.042, 1.014, 0.99,
+    0.972, 0.958, 0.95, 0.946, 0.946, 0.949, 0.954, 0.961, 0.969, 0.977, 0.985, 0.992, 0.998,
+    1.003, 1.007, 1.01, 1);
+
+  /* ---------- Z-index ---------- */
+  --z-base: 0;
+  --z-raised: 10;       /* sticky bars, handles over images */
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-overlay: 300;     /* custom overlays (native <dialog> uses the top layer) */
+  --z-toast: 400;
+  --z-tooltip: 500;
+}
+
+/* Reduced motion: durations collapse, springs flatten. Components read these
+   tokens, so this one block calms the whole UI. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 1ms;
+    --duration-base: 1ms;
+    --duration-slow: 1ms;
+    --ease-bounce: linear;
+    --ease-spring: linear;
+  }
+}
+
+/* ---------- Dark (system preference, unless forced light) ---------- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --color-bg: #1a1216;
+    --color-surface: #241a1f;
+    --color-raised: #2f2329;
+    --color-sunken: #130d10;
+    --color-text: #fbeef2;
+    --color-muted: #c2abb4;
+    --color-subtle: #9c8690;
+    --color-border: #3e2f36;
+    --color-border-strong: #8a7680;
+    --color-accent: var(--raspberry-400);
+    --color-accent-hover: #ff7397;
+    --color-accent-press: var(--raspberry-500);
+    --color-accent-ink: var(--plum-950);
+    --color-accent-text: var(--raspberry-300);
+    --color-accent-soft: #4a1d2c;
+    --color-accent-edge: #a8173f;
+    --color-highlight: var(--butter-300);
+    --color-success: #5fd39b;
+    --color-success-soft: #173528;
+    --color-warning: #ffc85a;
+    --color-warning-soft: #3a2a0e;
+    --color-danger: #ff8080;
+    --color-danger-soft: #42181b;
+    --color-on-status: #1a1216;
+    --color-focus: #8fb6ff;
+    --color-overlay: rgb(8 4 6 / 0.66);
+    --shadow-color: 330 50% 2%;
+    --shadow-1: 0 1px 2px hsl(var(--shadow-color) / 0.4);
+    --shadow-2: 0 2px 4px hsl(var(--shadow-color) / 0.35), 0 8px 18px -6px hsl(var(--shadow-color) / 0.5);
+    --shadow-3: 0 4px 10px hsl(var(--shadow-color) / 0.4), 0 22px 48px -12px hsl(var(--shadow-color) / 0.7);
+  }
+}
+
+/* ---------- Dark (forced) ---------- */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-bg: #1a1216;
+  --color-surface: #241a1f;
+  --color-raised: #2f2329;
+  --color-sunken: #130d10;
+  --color-text: #fbeef2;
+  --color-muted: #c2abb4;
+  --color-subtle: #9c8690;
+  --color-border: #3e2f36;
+  --color-border-strong: #8a7680;
+  --color-accent: var(--raspberry-400);
+  --color-accent-hover: #ff7397;
+  --color-accent-press: var(--raspberry-500);
+  --color-accent-ink: var(--plum-950);
+  --color-accent-text: var(--raspberry-300);
+  --color-accent-soft: #4a1d2c;
+  --color-accent-edge: #a8173f;
+  --color-highlight: var(--butter-300);
+  --color-success: #5fd39b;
+  --color-success-soft: #173528;
+  --color-warning: #ffc85a;
+  --color-warning-soft: #3a2a0e;
+  --color-danger: #ff8080;
+  --color-danger-soft: #42181b;
+  --color-on-status: #1a1216;
+  --color-focus: #8fb6ff;
+  --color-overlay: rgb(8 4 6 / 0.66);
+  --shadow-color: 330 50% 2%;
+  --shadow-1: 0 1px 2px hsl(var(--shadow-color) / 0.4);
+  --shadow-2: 0 2px 4px hsl(var(--shadow-color) / 0.35), 0 8px 18px -6px hsl(var(--shadow-color) / 0.5);
+  --shadow-3: 0 4px 10px hsl(var(--shadow-color) / 0.4), 0 22px 48px -12px hsl(var(--shadow-color) / 0.7);
+}

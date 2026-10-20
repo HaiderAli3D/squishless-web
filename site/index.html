@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Squishless: resize photos without the squish</title>
+  <meta name="description" content="Make a photo narrower, square or story-shaped without squashing the people in it. Free content-aware resizing that runs entirely in your browser; nothing is uploaded.">
+  <meta name="theme-color" content="#fdf6f4" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1a1216" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light dark">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="__SITE_URL__/">
+  <link rel="canonical" href="__SITE_URL__/">
+  <meta property="og:site_name" content="Squishless">
+  <meta property="og:title" content="Squishless: resize photos without the squish">
+  <meta property="og:description" content="Content-aware photo resizing in your browser. Free, private, open source.">
+  <meta property="og:image" content="__SITE_URL__/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Squishless: a photo made narrower without squashing the person in it">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Squishless: resize photos without the squish">
+  <meta name="twitter:description" content="Content-aware photo resizing in your browser. Free, private, open source.">
+  <meta name="twitter:image" content="__SITE_URL__/assets/img/og-image.png">
+
+  <script src="/assets/js/theme.js?v=__BUILD_ID__"></script>
+  <link rel="preload" href="/assets/fonts/dynapuff-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/assets/img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="stylesheet" href="/assets/css/tokens.css?v=__BUILD_ID__">
+  <link rel="stylesheet" href="/assets/css/base.css?v=__BUILD_ID__">
+  <link rel="stylesheet" href="/assets/css/landing.css?v=__BUILD_ID__">
+  <script type="module" src="/assets/js/landing/main.js?v=__BUILD_ID__"></script>
+  <script src="/sw-register.js?v=__BUILD_ID__" defer></script>
+</head>
+<body class="landing">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="/" aria-label="Squishless home">
+        <img src="/assets/img/mark.svg" alt="" width="32" height="32"><span>Squishless</span>
+      </a>
+      <nav class="site-nav" aria-label="Main">
+        <a class="site-nav__link" href="#how">How it works</a>
+        <a class="site-nav__link" href="#faq">FAQ</a>
+        <a class="btn btn--ghost btn--icon site-nav__gh" href="https://github.com/HaiderAli3D/squishless-web" aria-label="Squishless on GitHub" data-tooltip="Source on GitHub" data-tooltip-pos="bottom">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.8a10.2 10.2 0 0 0-3.2 19.9c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.2-3.4-1.2-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.6 1 1.6 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.3-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .9-.3 2.8 1a9.6 9.6 0 0 1 5.1 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.7.7 1 1.6 1 2.7 0 3.9-2.3 4.8-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10.2 10.2 0 0 0 12 1.8Z"/></svg>
+        </a>
+        <button class="btn btn--ghost btn--icon theme-toggle" type="button" data-theme-toggle data-tooltip="Toggle theme" data-tooltip-pos="bottom" data-tooltip-align="end">
+          <svg class="theme-toggle__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
+          <svg class="theme-toggle__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+        </button>
+        <a class="btn btn--secondary btn--sm site-nav__app" href="/app">Open the app</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ Hero ============ -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <h1 id="hero-title" class="hero__title">Resize photos without the squish.</h1>
+          <p class="hero__lead">Squishless trims the boring bits, like empty sky, grass and water, so a photo fits the shape you need and the people in it keep theirs.</p>
+          <div class="hero__ctas">
+            <a class="btn btn--primary btn--lg" href="/app">Open the app</a>
+            <button class="btn btn--secondary btn--lg" type="button" data-pick-photo>Try it with your photo</button>
+          </div>
+          <p class="hero__note">Free, no sign-up. Your photos never leave your device.</p>
+        </div>
+
+        <div class="hero-demo" data-sample="portrait-field">
+          <p class="demo-hint" aria-hidden="true">
+            <span>drag me</span>
+            <svg viewBox="0 0 60 44" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6c14 0 34 4 44 28"/><path d="m38 30 10 6 3-12"/></svg>
+          </p>
+          <div class="demo-stage" data-sample="portrait-field">
+            <div class="demo-photo">
+              <img class="demo-img" src="/assets/landing/portrait-field.jpg" width="900" height="585" alt="A woman in sunglasses holding a bunch of daisies in a sunny field" fetchpriority="high">
+              <canvas class="demo-canvas" width="900" height="585" hidden></canvas>
+            </div>
+            <span class="demo-gone" aria-hidden="true"></span>
+            <span class="demo-tag" aria-hidden="true">Squishless</span>
+            <div class="demo-handle" role="slider" tabindex="0" aria-label="Photo width" aria-orientation="horizontal" aria-valuemin="38" aria-valuemax="100" aria-valuenow="100" aria-valuetext="100% of the width">
+              <span class="demo-handle__grip">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6 3 12l6 6M15 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="demo-readout tabular" aria-hidden="true">900 px</span>
+            </div>
+          </div>
+          <div class="demo-controls">
+            <div class="segmented demo-mode" role="radiogroup" aria-label="Resize method">
+              <label><input type="radio" name="demo-mode" value="carve" checked><span>Squishless</span></label>
+              <label><input type="radio" name="demo-mode" value="normal"><span>Normal resize</span></label>
+            </div>
+            <div class="demo-samples" role="radiogroup" aria-label="Sample photo">
+              <label class="demo-sample"><input type="radio" name="demo-sample" value="portrait-field" checked><img src="/assets/landing/portrait-field-thumb.jpg" width="144" height="94" fetchpriority="low" decoding="async" alt="Field"></label>
+              <label class="demo-sample"><input type="radio" name="demo-sample" value="lake-canoe"><img src="/assets/landing/lake-canoe-thumb.jpg" width="144" height="94" fetchpriority="low" decoding="async" alt="Canoe"></label>
+              <label class="demo-sample"><input type="radio" name="demo-sample" value="city-skyline"><img src="/assets/landing/city-skyline-thumb.jpg" width="144" height="94" fetchpriority="low" decoding="async" alt="City"></label>
+              <label class="demo-sample"><input type="radio" name="demo-sample" value="sample"><img src="/assets/landing/sample-thumb.jpg" width="144" height="94" fetchpriority="low" decoding="async" alt="Hedge"></label>
+            </div>
+          </div>
+          <p class="demo-caption" aria-live="polite">The field got shorter. She didn’t.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Watch it think ============ -->
+    <section id="how" class="section think" data-sample="lake-canoe" aria-labelledby="how-title">
+      <div class="container think__grid">
+        <div class="think__media">
+          <div class="think__frame">
+            <img class="think__img" src="/assets/landing/lake-canoe.jpg" width="900" height="585" alt="" loading="lazy" decoding="async">
+            <canvas class="think__canvas" width="900" height="585" hidden aria-hidden="true"></canvas>
+          </div>
+          <div class="think__bar">
+            <button class="btn btn--secondary btn--sm think__toggle" type="button">
+              <svg class="think__icon-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1.2"/><rect x="14" y="5" width="4" height="14" rx="1.2"/></svg>
+              <svg class="think__icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.4-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></svg>
+              <span class="think__toggle-label">Pause</span>
+            </button>
+            <span class="think__count small muted tabular" aria-hidden="true"></span>
+          </div>
+        </div>
+        <div class="think__text">
+          <h2 id="how-title">Watch it think</h2>
+          <p class="think__intro">No AI guesswork. Just a neat trick from 2007 called seam carving, done a few hundred times a second.</p>
+          <ol class="think__steps" role="list">
+            <li class="think__step">
+              <span class="think__num" aria-hidden="true">1</span>
+              <div>
+                <h3 class="think__step-title">Score every pixel</h3>
+                <p>Busy, detailed spots score high. Flat sky and calm water score low.</p>
+              </div>
+            </li>
+            <li class="think__step">
+              <span class="think__num" aria-hidden="true">2</span>
+              <div>
+                <h3 class="think__step-title">Find the most boring path</h3>
+                <p>Trace a wiggly line from top to bottom through the lowest scores, one pixel per row.</p>
+              </div>
+            </li>
+            <li class="think__step">
+              <span class="think__num" aria-hidden="true">3</span>
+              <div>
+                <h3 class="think__step-title">Remove it, and repeat</h3>
+                <p>Out goes the path, the photo closes the gap, and the hunt starts again until it fits.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Try it ============ -->
+    <section id="try" class="section try" aria-labelledby="try-title">
+      <div class="container">
+        <div class="dropzone try__zone" id="try-zone">
+          <div class="try__art" aria-hidden="true">
+            <span class="try__card try__card--back"></span>
+            <span class="try__card try__card--front">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="1.8"/><path d="m21 16-5-5-9 9"/></svg>
+            </span>
+          </div>
+          <h2 id="try-title" class="try__title">Try it with your photo</h2>
+          <p class="try__text try__text--desk">Drop a photo anywhere on this page, paste one, or pick one from your device. It opens in the app and stays on your device.</p>
+          <p class="try__text try__text--touch">Pick a photo from your phone. It opens in the app and stays on your device.</p>
+          <button class="btn btn--primary btn--lg" type="button" data-pick-photo>Choose photos</button>
+          <input id="try-input" class="visually-hidden" type="file" accept="image/*,.heic,.heif,.avif" multiple tabindex="-1" aria-hidden="true">
+          <p class="try__paste small muted">Or press <kbd>Ctrl</kbd> + <kbd>V</kbd> (<kbd>⌘</kbd> + <kbd>V</kbd> on a Mac) to paste.</p>
+          <p id="try-status" class="try__status" role="status"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Features ============ -->
+    <section id="features" class="section features" aria-labelledby="features-title">
+      <div class="container">
+        <h2 id="features-title" class="section-title">What’s in the box</h2>
+        <ul class="bento" role="list">
+          <li class="card bento__item bento__item--private">
+            <span class="sticker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/><path d="M12 14.5v2.5"/></svg></span>
+            <h3>Your photos stay put</h3>
+            <p>Everything happens in your browser. Nothing is uploaded, and there are no accounts, cookies or trackers. Once it has loaded, it even works offline.</p>
+          </li>
+          <li class="card bento__item bento__item--fast">
+            <span class="sticker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2.5 4.5 13.5H12l-1 8 8.5-11H12l1-8Z"/></svg></span>
+            <h3>Live while you drag</h3>
+            <p>Pull an edge and the preview follows your finger. The full-quality result lands a second or two after you let go.</p>
+          </li>
+          <li class="card bento__item">
+            <span class="sticker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="3" width="13" height="13" rx="2.5"/><path d="M4 7.5V18a2.5 2.5 0 0 0 2.5 2.5H17"/><path d="M13.5 6.5v6M11 10l2.5 2.5L16 10"/></svg></span>
+            <h3>A whole stack at once</h3>
+            <p>Load a pile of photos, resize them all, and download one ZIP.</p>
+          </li>
+          <li class="card bento__item">
+            <span class="sticker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18.5 3.5a2.1 2.1 0 0 1 3 3L12 16l-4 1 1-4 9.5-9.5Z"/><path d="M8 17c-1 2.5-3 3.5-5.5 3.5C3 18 4 16 6 15.5"/></svg></span>
+            <h3>Keep this, lose that</h3>
+            <p>Paint over what must stay, or over what should go first, like a stray lamp post or a photobomber.</p>
+          </li>
+          <li class="card bento__item">
+            <span class="sticker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M8.8 14.5a4 4 0 0 0 6.4 0"/><path d="M9 9.5h.01M15 9.5h.01" stroke-width="3"/></svg></span>
+            <h3>Faces are off-limits</h3>
+            <p>Face detection protects people automatically, so nobody ends up with a skinny nose.</p>
+          </li>
+          <li class="card bento__item bento__item--sizes">
+            <span class="sticker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 12H3m18 0h-4M5 10l-2 2 2 2m14-4 2 2-2 2"/></svg></span>
+            <div class="sizes__text">
+              <h3>Any shape you need</h3>
+              <p>Square, portrait, story, widescreen, banner, or exact pixels. Pick a purpose and it does the maths.</p>
+            </div>
+            <div class="sizes" aria-hidden="true">
+              <span class="size size--1-1"><span>1:1</span></span>
+              <span class="size size--4-5"><span>4:5</span></span>
+              <span class="size size--9-16"><span>9:16</span></span>
+              <span class="size size--16-9"><span>16:9</span></span>
+              <span class="size size--3-1"><span>3:1</span></span>
+            </div>
+          </li>
+          <li class="card bento__item bento__item--free">
+            <span class="sticker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.5s-8-4.6-8-10.4A4.4 4.4 0 0 1 12 7.6a4.4 4.4 0 0 1 8 2.5c0 5.8-8 10.4-8 10.4Z"/></svg></span>
+            <h3>Free and open source</h3>
+            <p>No watermark, no limits, no catch. <a href="https://github.com/HaiderAli3D/squishless-web">Read the code on GitHub</a>.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ Gallery ============ -->
+    <section id="gallery" class="section gallery" aria-labelledby="gallery-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="gallery-title" class="section-title">Same size, two ways</h2>
+          <p class="section-intro">Each pair is the same photo resized to the same size. Drag the slider: a normal resize on the left, Squishless on the right.</p>
+        </div>
+        <div class="gallery__grid">
+          <figure class="gallery__item">
+            <div class="gallery__slot gallery__slot--4-5" data-before="/assets/landing/gallery/city-portrait-normal.jpg" data-after="/assets/landing/gallery/city-portrait-squishless.jpg" data-label="City skyline: normal resize compared with Squishless">
+              <img class="gallery__fallback" src="/assets/landing/gallery/city-portrait-squishless.jpg" width="520" height="650" alt="The skyline resized to 4:5 with Squishless" loading="lazy" decoding="async">
+            </div>
+            <figcaption><strong>Skyline to 4:5</strong> <span class="muted tabular">1000 × 650 to 520 × 650</span></figcaption>
+          </figure>
+          <figure class="gallery__item">
+            <div class="gallery__slot gallery__slot--1-1" data-before="/assets/landing/gallery/girl-square-normal.jpg" data-after="/assets/landing/gallery/girl-square-squishless.jpg" data-label="Girl by a hedge: normal resize compared with Squishless">
+              <img class="gallery__fallback" src="/assets/landing/gallery/girl-square-squishless.jpg" width="447" height="447" alt="The girl by the hedge resized to a square with Squishless" loading="lazy" decoding="async">
+            </div>
+            <figcaption><strong>Landscape to square</strong> <span class="muted tabular">670 × 447 to 447 × 447</span></figcaption>
+          </figure>
+          <figure class="gallery__item">
+            <div class="gallery__slot gallery__slot--4-5" data-before="/assets/landing/gallery/canoe-portrait-normal.jpg" data-after="/assets/landing/gallery/canoe-portrait-squishless.jpg" data-label="Canoe on a lake: normal resize compared with Squishless">
+              <img class="gallery__fallback" src="/assets/landing/gallery/canoe-portrait-squishless.jpg" width="520" height="650" alt="The canoe photo resized to 4:5 with Squishless" loading="lazy" decoding="async">
+            </div>
+            <figcaption><strong>Lake view to 4:5</strong> <span class="muted tabular">1000 × 650 to 520 × 650</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section id="faq" class="section faq" aria-labelledby="faq-title">
+      <div class="container faq__grid">
+        <div>
+          <h2 id="faq-title" class="section-title">Questions</h2>
+          <p class="section-intro">Something else? <a href="https://github.com/HaiderAli3D/squishless-web/issues">Ask on GitHub</a>.</p>
+        </div>
+        <div class="faq__list">
+          <details class="faq__item">
+            <summary>Is it really free?</summary>
+            <p>Yes. No account, no watermark, no trial. Squishless runs on your own device, so it costs nothing to keep running, and the code is open source.</p>
+          </details>
+          <details class="faq__item">
+            <summary>Are my photos uploaded anywhere?</summary>
+            <p>No. The resizing engine runs inside this page, in your browser. Your photos are never sent to a server; there isn’t one to send them to. You can load the app, switch off your Wi-Fi and keep going.</p>
+          </details>
+          <details class="faq__item">
+            <summary>Which formats work?</summary>
+            <p>Anything your browser can open: JPEG, PNG, WebP, GIF, BMP and AVIF, plus HEIC on Safari. You can save as JPG, PNG or WebP. Photo rotation from your camera is respected, and location data is not copied into the result.</p>
+          </details>
+          <details class="faq__item">
+            <summary>Why is a huge photo slow?</summary>
+            <p>For every path it removes, Squishless looks at every pixel again. A phone camera photo of 12 megapixels can take 20 to 40 seconds in a browser. If a photo is too big for your device, the app offers to shrink it a little first.</p>
+          </details>
+          <details class="faq__item">
+            <summary>Can it make photos wider, too?</summary>
+            <p>Yes. It finds the same boring paths and doubles them up instead of removing them. That works best for small amounts; for big changes it scales up first and then trims.</p>
+          </details>
+          <details class="faq__item">
+            <summary>What is seam carving?</summary>
+            <p>A technique from a 2007 paper by Shai Avidan and Ariel Shamir. A “seam” is a connected line of pixels from one edge of the photo to the other; removing the least noticeable seams again and again changes the size while keeping what matters.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__grid">
+      <div class="site-footer__brand">
+        <a class="brand" href="/" aria-label="Squishless home">
+          <img src="/assets/img/mark.svg" alt="" width="32" height="32" loading="lazy"><span>Squishless</span>
+        </a>
+        <p class="small muted">Resize photos without the squish. No uploads, no cookies, no analytics: your photos stay on your device.</p>
+        <div class="site-footer__actions">
+          <a class="btn btn--secondary btn--sm" href="https://github.com/HaiderAli3D/squishless-web">GitHub</a>
+          <button class="btn btn--ghost btn--icon btn--sm theme-toggle" type="button" data-theme-toggle data-tooltip="Toggle theme">
+            <svg class="theme-toggle__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
+            <svg class="theme-toggle__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="site-footer__credits small">
+        <h2 class="site-footer__heading">Credits</h2>
+        <ul role="list">
+          <li>Seam carving: Shai Avidan and Ariel Shamir, <cite>Seam Carving for Content-Aware Image Resizing</cite>, SIGGRAPH 2007.</li>
+          <li>Based on <a href="https://github.com/esimov/caire">esimov/caire</a> (MIT licence) by Endre Simo, with face detection by <a href="https://github.com/esimov/pigo">esimov/pigo</a>.</li>
+          <li>Photos: Roberto Nickson (canoe), Alexander Shustov (field) and Kevin Young (city) on <a href="https://unsplash.com">Unsplash</a>; the hedge photo comes from the caire repository.</li>
+          <li>Fonts: DynaPuff and Figtree (SIL Open Font License).</li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <div class="drop-overlay" aria-hidden="true">
+    <p>Let go to open it in Squishless</p>
+  </div>
+</body>
+</html>

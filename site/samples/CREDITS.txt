@@ -1,0 +1,23 @@
+Sample images
+=============
+
+sample.jpg
+  From the esimov/caire repository (testdata), MIT License.
+  https://github.com/esimov/caire
+
+The following were downloaded via Lorem Picsum (https://picsum.photos) at 1000x650,
+which serves photos from Unsplash under the Unsplash License
+(https://unsplash.com/license: free to use, no permission or attribution required;
+credited here anyway).
+
+lake-canoe.jpg
+  Photo by Roberto Nickson on Unsplash - https://unsplash.com/photos/7BjmDICVloE
+  (picsum id 1011)
+
+portrait-field.jpg
+  Photo by Alexander Shustov on Unsplash - https://unsplash.com/photos/AHBiSKaENwc
+  (picsum id 64)
+
+city-skyline.jpg
+  Photo by Kevin Young on Unsplash - https://unsplash.com/photos/-icmOdYWXuQ
+  (picsum id 1067)

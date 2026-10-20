@@ -1,0 +1,21 @@
+{
+  "id": "/app",
+  "name": "Squishless",
+  "short_name": "Squishless",
+  "description": "Resize photos without the squish. Content-aware resizing that runs entirely in your browser.",
+  "lang": "en",
+  "dir": "ltr",
+  "start_url": "/app",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#fdf6f4",
+  "theme_color": "#fdf6f4",
+  "categories": ["photo", "utilities", "productivity"],
+  "icons": [
+    { "src": "/assets/img/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "/assets/img/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/assets/img/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/assets/img/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

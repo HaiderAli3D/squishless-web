@@ -1,0 +1,4 @@
+body { margin: 0; font-family: sans-serif; }
+.row { display: flex; align-items: center; gap: 24px; padding: 24px; }
+.light { background: #fdf6f4; }
+.dark { background: #1a1216; }

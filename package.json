@@ -1,0 +1,13 @@
+{
+  "name": "squishless-web",
+  "private": true,
+  "description": "Squishless web app: content-aware image resizing in the browser",
+  "scripts": {
+    "build": "bash scripts/build-site.sh",
+    "serve": "node scripts/serve.mjs",
+    "test:e2e": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.1"
+  }
+}
